@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import WorkoutDetails from "../components/WorkoutDetails"
 import WorkoutForm from "../components/workoutForm"
 import { useWorkoutContext } from "../hooks/useWorkoutContext"
+import Navbar from "../components/Navbar"
 
 const Home = () => {
     const {workouts,dispatch} = useWorkoutContext()
@@ -15,9 +16,10 @@ const Home = () => {
             }
         }
         fetchWorkout()
-    }, [dispatch    ])
+    }, [dispatch ])
 
-    return (
+    return (<>
+        <Navbar/>
         <div className="home">
             <div className="workouts">
                 {workouts && workouts.map((workout)=>(
@@ -29,7 +31,7 @@ const Home = () => {
             </div>
             <WorkoutForm/>
         </div>
-    )
+    </>)
 }
 
 export default Home

@@ -1,6 +1,5 @@
 require('dotenv').config()
 
-const { log } = require("console")
 const express=require('express')
 const mongoose= require('mongoose')
 const workoutRoutes=require('./routes/workouts')
