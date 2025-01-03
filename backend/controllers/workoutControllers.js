@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 
 
 const getWorkouts = async(req,res) =>{
-    const workouts= await Workout.find({}).sort({createdAt:-1})
+    const email=req.body.email
+    const workouts= await Workout.find({email:email}).sort({createdAt:-1})
     res.status(200).json(workouts)
 }
 const getWorkout = async(req,res)=>{
@@ -20,10 +21,10 @@ const getWorkout = async(req,res)=>{
     res.status(200).json(workout)
 }
 const createWorkout = async(req,res) =>{
-    const {title ,load , reps} = req.body
+    const {email,title ,load , reps} = req.body
 
     try{
-        const workout=await Workout.create({title,load,reps})
+        const workout=await Workout.create({email,title,load,reps})
         res.status(200).json(workout)
     } catch(error){
         res.status(400).json({error:'Not enough data'})
