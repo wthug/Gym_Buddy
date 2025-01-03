@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 
 const Navbar = () =>{
+    let navigate = useNavigate()
+    const handleLogout = async()=>{
+        localStorage.removeItem('authToken')
+        localStorage.removeItem('authEmail')
+        navigate('/sign')
+    }
     return <>
         <header>
             <div className="container"> 
@@ -9,6 +15,7 @@ const Navbar = () =>{
                 </Link>
             </div>
         </header>
+        <button onClick={handleLogout}>Log Out</button>
     </>
 }
 

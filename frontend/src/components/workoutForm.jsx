@@ -10,9 +10,9 @@ const WorkoutForm = () => {
 
     const updateWorkout = async(e)=>{
         e.preventDefault()
-
-        const workout= {title,load,reps}
-        const response = await fetch('/api/workouts',{
+        const email = localStorage.getItem('authEmail')
+        const workout= {email,title,load,reps}
+        const response = await fetch('/api/workouts/add',{
             method: 'POST',
             body: JSON.stringify(workout),
             headers:{
